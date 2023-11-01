@@ -1,0 +1,19 @@
+import openai
+
+# Set your OpenAI API key here
+api_key = "your-api-key"
+
+# Function to interact with GPT-3
+def chat_with_gpt3(prompt, max_tokens=50):
+    openai.api_key = api_key
+    response = openai.Completion.create(
+        engine="text-davinci-002",  # You can choose a different engine if needed
+        prompt=prompt,
+        max_tokens=max_tokens
+    )
+    return response.choices[0].text
+
+# Example usage
+user_input = "Tell me a joke:"
+response = chat_with_gpt3(user_input, max_tokens=100)
+print(response)
